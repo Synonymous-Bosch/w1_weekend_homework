@@ -1,3 +1,4 @@
+import pdb
 # WRITE YOUR FUNCTIONS HERE
 
 def get_pet_shop_name(self):
@@ -19,8 +20,45 @@ def get_stock_count(self):
     return len(self["pets"])
 
 def get_pets_by_breed(self, breed):
-    pets = []
-    for pet in self["pets"]:
-        if breed == pet["breed"]:
-            pets.append(pet)
-    return pets
+    # pets = []
+    # for pet in self["pets"]:
+    #     if breed == pet["breed"]:
+    #         pets.append(pet)
+    # return pets
+
+    return [pet for pet in self["pets"] if breed == pet["breed"]]
+
+def find_pet_by_name(self, name):
+    pet_list = [pet for pet in self["pets"] if name == pet["name"]]
+    try:
+        return pet_list[0]
+    except IndexError:
+        return None
+
+def remove_pet_by_name(self, name):
+    # for pet in self["pets"]:
+    #     if pet["name"] == name:
+    #         self["pets"].remove(pet)
+
+    [self["pets"].remove(pet) for pet in self["pets"] if pet["name"] == name]
+
+def add_pet_to_stock(self, new_pet):
+    self["pets"].append(new_pet)
+
+def get_customer_cash(customer):
+    return customer["cash"]
+
+def remove_customer_cash(customer, amount):
+    customer["cash"] -= amount
+
+def get_customer_pet_count(customer):
+    return len(customer["pets"])
+
+def add_pet_to_customer(customer, new_pet):
+    customer["pets"].append(new_pet)
+
+def customer_can_afford_pet(customer, new_pet):
+    if customer["cash"] >= new_pet["price"]:
+        return True
+    return False
+
