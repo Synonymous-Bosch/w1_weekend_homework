@@ -34,6 +34,15 @@ def find_pet_by_name(self, name):
         return pet_list[0]
     except IndexError:
         return None
+    
+    # pet_list = []
+    # for pet in self["pets"]:
+    #     if name == pet["name"]:
+    #         pet_list.append(pet)
+    # if len(pet_list) == 0:
+    #     return None
+    # else:
+    #     return pet_list[0]
 
 def remove_pet_by_name(self, name):
     # for pet in self["pets"]:
